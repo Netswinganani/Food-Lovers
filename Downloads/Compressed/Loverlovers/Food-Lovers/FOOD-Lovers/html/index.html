@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodLovers : Best E-Store</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <nav class="navbar"></nav>
+    <header class="hero-section">
+      <div class="content">
+        <p class="sub-heading">Buy Best Food at most Affordable Prices</p>
+      </div>
+    </header>
+    <section class="sub-header">
+      <section class="feature">
+        <div class="feature1">
+          <p class="feature1text">Instant Delivery</p>
+          <img src="images/instantdelivery.png" class="feature1img" />
+        </div>
+        <div class="feature2">
+          <p class="feature2text">24 / 7 Support</p>
+          <img src="images/support.png" class="feature2img" />
+        </div>
+        <div class="feature3">
+          <p class="feature3text">Top Quality</p>
+          <img src="images/quality.png" class="feature3img" />
+        </div>
+      </section>
+      <section class="feature-2">
+        <div class="feature-2s">
+          <img src="images/promo2.jpg" />
+          <div class="feature-2s-sub">
+            <p class="feature-2s-text">
+              Take Your Shopping Experience Online With FoodLovers
+            </p>
+            <br />
+            <a href="seller.html" class="know-more">Know More</a>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section class="product">
+      <h2 class="product-category">Food & Bevarages</h2>
+      <section class="section1"></section>
+      <h2 class="product-category1">Recipes</h2>
+      <section class="section2"></section>
+    </section>
+    <section class="promo">
+      <img src="images/promo.jpg" />
+      <div class="promotextbg">
+        <p class="promotext">10% Off On Total Purshase Over R1000</p>
+      </div>
+    </section>
+    <section class="collection-container">
+      <a href="/search/Tablet" class="collection">
+        <img src="images/promo1.jpg" alt="" />
+        <p class="collection-title">Promo <br /></p>
+      </a>
+      <a href="/search/Syrup" class="collection">
+        <img src="images/Lettuce-pre-pack-English-Cucumber-Tomato_1kg.jpg" alt="" />
+        <p class="collection-title">Veg <br /></p>
+      </a>
+      <a href="/search/Instrument" class="collection">
+        <img src="images/Chicken-Fillets-1.jpg" alt="" />
+        <p class="collection-title">Meats</p>
+      </a>
+      <a href="/search/Other" class="collection">
+        <img src="images/fruit-combo.jpg" alt="" />
+        <p class="collection-title">Fruits</p>
+      </a>
+    </section>
+    <section class="product">
+      <h2 class="product-category2">Recipes</h2>
+      <section class="section3"></section>
+    </section>
+    <!---->
+    <section class="collection-container1">
+      <div class="collection1" id="sourDoughTrigger">
+        <img src="images/sourdogh.jpg" alt="Sour Dough" />
+        <p class="collection-title1">Sour Dough <br /></p>
+      </div>
+    
+      <div class="collection1" id="smoothieTrigger">
+        <img src="images/Smoothie.jpg" alt="Smoothie" />
+        <p class="collection-title1">Smoothie <br /></p>
+      </div>
+    
+      <div class="collection1" id="saladsTrigger">
+        <img src="images/Salads.jpg" alt="Salads" />
+        <p class="collection-title1">Salads</p>
+      </div>
+    
+      <div class="collection1" id="braaiTrigger">
+        <img src="images/Braai.jpg" alt="Braai" />
+        <p class="collection-title1">Braai</p>
+      </div>
+    </section>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Pop-ups -->
+    <div class="popup" id="sourDoughPopup">
+      <span class="close" id="closeSourDoughBtn">&times;</span>
+      <img src="images/sourdogh.jpg" alt="Sour Dough" class="popup-image" />
+      <div class="info">
+        <div class="popup-caption">
+          <p>
+            Sour Dough is a tangy, crusty bread with a delightful chewy texture! It's perfect for sandwiches or just on its own. Visit our bakery department and shop for a range of our available artisanal breads.
+
+          </p>
+          <p class="hashtags">#artisanalbread #sourdoughlover</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup" id="smoothiePopup">
+      <span class="close" id="closeSmoothieBtn">&times;</span>
+      <img src="images/Smoothie.jpg" alt="Smoothie" class="popup-image" />
+      <div class="info">
+        <div class="popup-caption">
+          <p>
+            A quick, healthy boost that's as fresh as a summer’s day in SA! 🌞 Our All-Green Smoothie is the ultimate nutrient-packed sip that'll keep you feeling lekker and energized all day long!
+          </p>
+          <p class="hashtags">#experiencewellness #wellnessmonth</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup" id="saladsPopup">
+      <span class="close" id="closeSaladsBtn">&times;</span>
+      <img src="images/Salads.jpg" alt="Salads" class="popup-image" />
+      <div class="info">
+        <div class="popup-caption">
+          <p>
+            Fresh, colorful, and packed with nutrients, our salads are the perfect side dish or light meal for any occasion.
+          </p>
+          <p class="hashtags">#healthyfood #greensforeveryone</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="popup" id="braaiPopup">
+      <span class="close" id="closeBraaiBtn">&times;</span>
+      <img src="images/Braai.jpg" alt="Braai" class="popup-image" />
+      <div class="info">
+        <div class="popup-caption">
+          <p>
+            Nothing beats the flavor of a traditional South African Braai! Enjoy the smokey goodness of grilled meats with friends and family.
+          </p>
+          <p class="hashtags">#braaitime #southafricantradition</p>
+        </div>
+      </div>
+    </div>
+    
+        
+
+
+    <section class="promo2">
+      <div class="promotextbg2">
+        <p class="promotext2">20 % Off On Meat Recipes</p>
+      </div>
+      <img src="images/Steak.jpg" />
+    </section>
+    <footer>
+      <div class="footer-content">
+        <img src="images/mainlogo.png" class="logo" alt="" />
+        <div class="footer-content1">
+          <div class="company">
+            <p class="company-name">FoodLovers</p>
+            <p class="company-address">
+              FoodLovers, 289 Cooper St. Watertown, MA 02472
+            </p>
+          </div>
+          <div class="socials">
+            <a href="https://www.facebook.com/FoodLovers.in" class="social-link1"
+              ><img src="images/facebook.png" class="social-icon"
+            /></a>
+            <a href="https://www.instagram.com/FoodLovers.in" class="social-link"
+              ><img src="images/instagram.png" class="social-icon"
+            /></a>
+            <a href="https://www.twitter.com/foodlovers.in" class="social-link"
+              ><img src="images/twitter.png" class="social-icon"
+            /></a>
+          </div>
+          <div class="footer-ul-container">
+            <ul class="footer-ul">
+              <li class="footer-li">
+                <a href="about.html" class="footer-link">About Us</a>
+              </li>
+              <li class="footer-li">
+                <a href="contact.html" class="footer-link">Contact Us</a>
+              </li>
+              <li class="footer-li">
+                <a href="seller.html" class="footer-link">Sell With Us</a>
+              </li>
+              <li class="footer-li">
+                <a href="terms.html" class="footer-link"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li class="footer-li">
+                <a href="privacy.html" class="footer-link"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="footer-credit">All Rights Reserved</p>
+      </div>
+    </footer>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+      // Get elements for all pop-ups
+      const sourDoughTrigger = document.getElementById('sourDoughTrigger');
+      const smoothieTrigger = document.getElementById('smoothieTrigger');
+      const saladsTrigger = document.getElementById('saladsTrigger');
+      const braaiTrigger = document.getElementById('braaiTrigger');
+    
+      const sourDoughPopup = document.getElementById('sourDoughPopup');
+      const smoothiePopup = document.getElementById('smoothiePopup');
+      const saladsPopup = document.getElementById('saladsPopup');
+      const braaiPopup = document.getElementById('braaiPopup');
+    
+      const closeSourDoughBtn = document.getElementById('closeSourDoughBtn');
+      const closeSmoothieBtn = document.getElementById('closeSmoothieBtn');
+      const closeSaladsBtn = document.getElementById('closeSaladsBtn');
+      const closeBraaiBtn = document.getElementById('closeBraaiBtn');
+    
+      const overlay = document.getElementById('overlay');
+    
+      // Functions to open popups
+      function openPopup(popup) {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+      }
+    
+      // Functions to close popups
+      function closePopup(popup) {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      }
+    
+      // Event listeners for opening pop-ups
+      sourDoughTrigger.addEventListener('click', () => openPopup(sourDoughPopup));
+      smoothieTrigger.addEventListener('click', () => openPopup(smoothiePopup));
+      saladsTrigger.addEventListener('click', () => openPopup(saladsPopup));
+      braaiTrigger.addEventListener('click', () => openPopup(braaiPopup));
+    
+      // Event listeners for closing pop-ups
+      closeSourDoughBtn.addEventListener('click', () => closePopup(sourDoughPopup));
+      closeSmoothieBtn.addEventListener('click', () => closePopup(smoothiePopup));
+      closeSaladsBtn.addEventListener('click', () => closePopup(saladsPopup));
+      closeBraaiBtn.addEventListener('click', () => closePopup(braaiPopup));
+    
+      // Close pop-up by clicking outside
+      overlay.addEventListener('click', () => {
+        closePopup(sourDoughPopup);
+        closePopup(smoothiePopup);
+        closePopup(saladsPopup);
+        closePopup(braaiPopup);
+      });
+    });
+    
+
+      </script>
+    <script src="js/getInstruments.js"></script>
+    <script src="js/getSyrups.js"></script>
+    <script src="js/getTablets.js"></script>
+    <script type="module" src="js/nav.js"></script>
+    <script src="js/wishlistbtn.js"></script>
+  </body>
+</html>
