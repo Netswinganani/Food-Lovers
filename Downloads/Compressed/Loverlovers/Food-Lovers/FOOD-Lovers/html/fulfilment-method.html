@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fulfilment Method</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/product.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    /* Basic styles for fulfilment methods layout */
+    .fulfilment-container {
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .fulfilment-option {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .fulfilment-option h2 {
+      margin: 0 0 10px;
+    }
+
+    .fulfilment-option ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .fulfilment-option ul li {
+      margin: 5px 0;
+    }
+
+    .proceed-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  <div class="fulfilment-container">
+    <h1>Select Fulfilment Method</h1>
+    
+    <div class="fulfilment-option" id="delivery-option">
+      <h2>Delivery</h2>
+      <ul>
+        <li>Convenient door-to-door service.</li>
+        <li>No need to leave your home.</li>
+        <li>Track your order online.</li>
+        <li>Fast and reliable delivery.</li>
+      </ul>
+      <button class="proceed-button" onclick="selectOption('delivery')">Select Delivery</button>
+    </div>
+
+    <div class="fulfilment-option" id="collect-option">
+      <h2>Collect in Store</h2>
+      <ul>
+        <li>Pick up at your convenience.</li>
+        <li>Save on delivery costs.</li>
+        <li>Immediate access to your purchase.</li>
+        <li>Opportunity to view other products in-store.</li>
+      </ul>
+      <button class="proceed-button" onclick="selectOption('collect')">Select Collect in Store</button>
+    </div>
+  </div>
+
+  <!-- Include the JavaScript files -->
+  <script src="js/nav.js" type="module"></script>
+  <script>
+    function selectOption(option) {
+      if (option === 'delivery') {
+        alert('You selected Delivery.');
+        window.location.href = 'delivery.html';
+      } else if (option === 'collect') {
+        alert('You selected Collect in Store./Feature coming soon/');
+        window.location.href = 'payinstore.html';
+      }
+      // Redirect or handle option selection
+       // Example redirection after selection
+    }
+  </script>
+</body>
+</html>
