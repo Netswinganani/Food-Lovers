@@ -1,0 +1,356 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5; /* Light gray background */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures body takes at least full viewport height */
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  margin-top: 40px; /* Space for the fixed navbar */
+  padding: 1px;
+  width: 80%;
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+.filter-sidebar {
+  width: 20%; /* Sidebar width */
+  padding: 20px;
+  background: #fff; /* White background for sidebar */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  height: fit-content; /* Adjust height based on content */
+  margin-right: 20px; /* Space between sidebar and product list */
+}
+
+.filter-sidebar h3, .filter-sidebar h4 {
+  margin-bottom: 10px; /* Space below headers */
+}
+
+.filter-sidebar ul, .filter-sidebar p {
+  margin-bottom: 15px; /* Space below lists and paragraphs */
+}
+
+.filter-sidebar label {
+  display: block; /* Each label on a new line */
+  margin-bottom: 10px; /* Space below labels */
+}
+
+.sort-options {
+  display: flex;
+  justify-content: space-between; /* Space between sort options */
+  margin-bottom: 20px; /* Space below sort options */
+  width: 100%;
+}
+
+.sort-options label {
+  margin-right: 10px; /* Space between sort labels */
+}
+
+.product-list {
+  flex: 1; /* Allows the product list to fill remaining space */
+  padding: 20px;
+  box-sizing: border-box; /* Includes padding in width calculations */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+  background: #fff; /* White background for product list */
+  transition: width 0.3s ease; /* Smooth transition for width adjustments */
+}
+
+.product-item {
+  border: 1px solid #ddd; /* Light gray border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden; /* Prevents overflow */
+  background: #fff; /* White background */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Centered text */
+  padding: 10px; /* Padding inside product item */
+}
+
+.product-image-summary {
+  width: 100%; /* Full width for images */
+  height: 150px; /* Fixed height for images */
+  object-fit: cover; /* Maintain aspect ratio while covering the area */
+}
+
+.product-details-summary {
+  padding: 10px 0; /* Vertical padding for product details */
+}
+
+.product-card-summary {
+  border: 1px solid #ddd; /* Border for product card */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevents overflow */
+  margin: 16px; /* Margin around cards */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  max-width: 300px; /* Max width for cards */
+}
+
+.product-image-summary {
+  position: relative; /* For positioning discount tag */
+}
+.add-to-cart {
+  display: block; /* Make it a block element */
+  margin: 60px auto; /* Center it with margin above and below */
+  padding: 10px 20px; /* Padding inside the button */
+  background-color: #009f03; /* Primary button color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1.1em; /* Slightly larger font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-align: center; /* Center the text */
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+.product-thumb-search {
+  width: 100%; /* Full width for thumbnail images */
+  height: auto; /* Automatic height */
+}
+.product-thumb-searc {
+  width: 100%; /* Ensure the image takes full width of its container */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 150px; /* Set a maximum width */
+  max-height: 150px; /* Set a maximum height */
+  object-fit: cover;
+}
+.discount-tag-search {
+  position: absolute; /* Positioned within product image */
+  top: 10px; /* Position from the top */
+  left: 10px; /* Position from the left */
+  background: red; /* Red background for discount tag */
+  color: white; /* White text for contrast */
+  padding: 5px; /* Padding around text */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.card-btn-search {
+  margin-top: 10px; /* Space above button */
+  padding: 8px; /* Padding inside button */
+  background: #ff5722; /* Button color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 20px;
+}
+
+.product-info-summary {
+  padding: 10px; /* Padding for product info */
+}
+
+.product-name {
+  font-size: 1.2em; /* Increased font size for product name */
+  margin-left: auto; /* Align to the right */
+}
+
+.product-short-desc-search {
+  font-size: 0.9em; /* Smaller font for description */
+  color: #666; /* Gray color for description text */
+}
+
+.product-price {
+  font-size: 1.1em; /* Slightly larger font for price */
+  font-weight: bold; /* Bold text for emphasis */
+}
+
+.actual-price-search {
+  text-decoration: line-through; /* Strikethrough for actual price */
+  color: #999; /* Gray color for actual price */
+}
+
+.side-panel {
+  position: fixed; /* Fixed position for the side panel */
+  top: 0; /* Align to top */
+  right: 0; /* Align to right */
+  width: 800px; /* Fixed width for side panel */
+  height: 100%; /* Full height */
+  background: #fff; /* White background */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  transform: translateX(100%); /* Hidden by default */
+  transition: transform 0.3s ease; /* Smooth transition */
+  padding: 20px; /* Padding inside the panel */
+  overflow-y: auto; /* Scroll if content overflows */
+  z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+#side-panel ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 1%; /* Padding for the list */
+  margin: auto; /* Center the list */
+}
+
+#side-panel ul li {
+  margin: auto; /* Center list items */
+  font-size: 16px; /* Font size for list items */
+}
+
+#side-panel img {
+  border: 1px solid #ddd; /* Border for images in the panel */
+  border-radius: 4px; /* Rounded corners for images */
+}
+
+.side-panel.active {
+  transform: translateX(0); /* Show the side panel when active */
+}
+
+button {
+  background-color: #007bff; /* Primary button color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding inside button */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.category-button {
+  background-color: #108a16; /* Category button color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  padding: 10px 15px; /* Padding inside button */
+  margin: 5px 0; /* Margin between buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+  width: 100%; /* Full width for buttons */
+}
+
+.category-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.side-panel-container {
+  display: flex; /* Flex layout for side panel content */
+  flex-direction: row; /* Horizontal alignment */
+  justify-content: space-between; /* Space between elements */
+  margin-bottom: 10px; /* Space below */
+}
+
+#product-details-list {
+  margin-left: 20px; /* Reduced left margin for better centering */
+  margin-right: 20px; /* Added right margin for balance */
+  padding: 10px; /* Padding for better spacing */
+  list-style-type: none; /* Remove default list styling */
+}
+
+#product-details-list li {
+  margin-bottom: 10px; /* Space between list items */
+  font-size: 14px; /* Font size for list items */
+  margin-left: 10px; /* Space to the left for list items */
+  padding: 10px; /* Add padding inside each list item */
+  border: 1px solid rgba(200, 200, 200, 0.5); /* Light border around items */
+  border-radius: 5px; /* Slightly rounded corners */
+  background-color: #f9f9f9; /* Light background color */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+
+}
+#product-details-list li:hover {
+  background-color: #eaeaea; /* Change background color on hover */
+}
+.product-details {
+  width: 45%; /* Keep width for the details container */
+  padding: 20px; /* Padding around details */
+  max-width: 600px; /* Limit the maximum width */
+  margin: 0 auto; /* Center the product details */
+  margin-left: 100;
+}
+
+.product-details h2 {
+  margin: 0; /* Remove default margin */
+  width: 75%; /* Limit width for heading */
+  font-size: 1.5em; /* Increase font size for the heading */
+  font-weight: bold; /* Make the heading bold */
+  color: #c80404; /* Dark color for better readability */
+  border-bottom: 2px solid #d9ff01; /* Light border below the heading */
+  padding-bottom: 10px; /* Space between heading and content */
+
+}
+.product-images {
+  width: 50%; /* Adjusted width for product images */
+  border-radius: 20px; /* Rounded corners */
+  max-width: 400px; /* Max width for images */
+  border: 2px solid #ddd; /* Clear border around the product images */
+  padding: 10px; /* Padding inside the border */
+  background-color: #f9f9f9; /* Light background color for contrast */
+
+}
+
+
+
+.other-products-list {
+  margin-top: 20px; /* Space above other products section */
+}
+
+
+.other-product-item {
+  flex: 1; /* Allows the product list to fill remaining space */
+  padding: 20px;
+  box-sizing: border-box; /* Includes padding in width calculations */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+  background: #fff; /* White background for product list */
+  transition: width 0.3s ease; /* Smooth transition for width adjustments */
+}
+
+.other-product-item img {
+  width: 100%; /* Ensure the image takes full width of its container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+#thumbnails {
+  display: flex; /* Flex layout for thumbnails */
+  margin-top: 35px; /* Space above thumbnails */
+}
+
+#thumbnails img {
+  width: 60px; /* Thumbnail size */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 5px; /* Space between thumbnails */
+  cursor: pointer; /* Pointer cursor on hover */
+  border: 2px solid transparent; /* Default border for thumbnails */
+  border-radius: 5px; /* Slightly rounded corners */
+  transition: border 0.3s; /* Smooth transition for hover effect */
+}
+#thumbnails :hover {
+  border: 6px solid rgb(46, 131, 0); /* Dark border on hover for better visibility */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column; /* Stack items on small screens */
+      margin-top: 20px; /* Adjust margin */
+  }
+  .filter-sidebar {
+      width: 100%; /* Full width on mobile */
+      margin-right: 0; /* Remove right margin */
+      margin-bottom: 20px; /* Space below */
+  }
+  .other-product-item {
+      flex: 1 1 calc(50% - 10px); /* 2 products per row */
+  }
+}
+@media (max-width: 480px) {
+  .other-product-item {
+      flex: 1 1 100%; /* 1 product per row */
+  }
+}
+
+
+/* Hover effect for product items */
+.product-item:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  transition: transform 0.2s ease; /* Smooth transition */
+}
