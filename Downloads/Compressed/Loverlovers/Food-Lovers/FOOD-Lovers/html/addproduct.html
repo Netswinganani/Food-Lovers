@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>FoodLovers: New Product</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/addProduct.css" />
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!--<nav class="navbar"></nav>-->
+    <div class="add-product-form">
+      <h1>Add Product</h1>
+      <input type="text" id="product-name" placeholder="Product Name" /><br />
+      <input type="text" id="short-desc" placeholder="Short Description" /><br />
+      <textarea id="description" placeholder="Description"></textarea><br />
+
+      <p class="upload-pic">Upload Images :</p>
+      <input type="file" id="link-img-1" accept="image/*" /><br />
+      <input type="file" id="link-img-2" accept="image/*" /><br />
+      <input type="file" id="link-img-3" accept="image/*" /><br />
+      <input type="file" id="link-img-4" accept="image/*" /><br />
+
+      <input type="number" id="actual-price" placeholder="Actual Price" />
+      <input type="number" id="discount" placeholder="Discount Percentage" />
+      <input type="number" id="sell-price" placeholder="Selling Price" />
+      <input type="number" id="stock" min="20" placeholder="In Stocks (Minimum 20)" /><br />
+      <input type="text" id="use" placeholder="Usage, e.g., cooking, baking, grilling" />
+      <input type="text" id="cate" placeholder="Category, e.g., Meats, Vegetables" /><br />
+      <input type="text" id="manuDate" placeholder="Manufacturing Date, e.g., Thu 20 Dec 20" />
+      <input type="text" id="exDate" placeholder="Expiry Date, e.g., Thu 20 Dec 23" /><br />
+      <input type="text" id="prescription" placeholder="Is this your first time selling this product? (Yes/No)" /><br />
+      <input type="checkbox" class="checkbox" id="tac" checked />
+      <label for="tac" style="font-size: large">FoodLovers will deduct 30% from your total revenue.</label>
+
+      <div class="buttons">
+        <button class="confirm-btn" id="add-btn">Add Product</button>
+      </div>
+    </div>
+
+    <img src="images/loader.gif" class="loader" alt="" />
+    <div class="alert-box">
+      <img src="images/error.png" class="alert-img" alt="" />
+      <p class="alert-msg"></p>
+    </div>
+
+    <script type="module" src="js/firebase.js"></script>
+    <script src="js/addProduct.js" type="module"></script>
+    <script type="module" src="js/adminnav.js"></script>
+    <!--<script src="js/token.js"></script>-->
+  </body>
+</html>
