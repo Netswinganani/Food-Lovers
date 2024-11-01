@@ -1,0 +1,61 @@
+/* user-profile.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  #profile-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #profile-info {
+    margin-bottom: 20px;
+  }
+  
+  #profile-info p {
+    font-size: 18px;
+  }
+  
+  #profile-update {
+    margin-top: 20px;
+  }
+  
+  #profile-update label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  #profile-update input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  #profile-update button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #profile-update button:hover {
+    background-color: #0056b3;
+  }
+  
