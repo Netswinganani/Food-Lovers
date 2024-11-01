@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>FoodLovers: Buy</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/search.css" />
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+</head>
+<body>
+    <nav class="navbar"></nav>
+
+    <!-- Loader and No Results Images -->
+    <img src="images/loader.gif" class="loader" alt="Loading..." />
+    <img src="images/no-results.gif" class="no-result hide" alt="No Results Found" />
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <h2 class="heading">Search for Products</h2>
+        <input type="text" id="search-input" placeholder="Enter product name..." />
+        <button id="search-button">Search</button>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="search-results hide">
+        <h2>Search results for <span id="result-key"></span></h2>
+    </section>
+
+    <!-- Product Container for Search Results -->
+    <section class="product-search">
+        <div class="product-container-search">
+            <section class="results"></section> <!-- Where product cards will be injected -->
+        </div>
+    </section>
+
+    <!-- Pagination (if needed) -->
+    <section class="collection-container hide">
+        <a href="#" class="next-btn">
+            <img src="images/arrow.png" alt="Next" />
+        </a>
+        <a href="#" class="prev-btn">
+            <img src="images/arrow.png" alt="Previous" />
+        </a>
+    </section>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="js/nav.js"></script>
+    <script type="module" src="js/search.js"></script>
+    <script src="js/wishcart.js"></script>
+    <script src="js/wishlistbtn.js"></script>
+</body>
+</html>

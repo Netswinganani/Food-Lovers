@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Information</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/product.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <style>
+    /* Basic styles for the form */
+    #delivery-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #delivery-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+    #delivery-form input {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    #delivery-form button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #delivery-form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  <h1>Delivery Information</h1>
+  <form id="delivery-form">
+    <label for="street">Street:</label>
+    <input type="text" id="street" required>
+    <br>
+    <label for="city">City:</label>
+    <input type="text" id="city" required>
+    <br>
+    <label for="zip">ZIP Code:</label>
+    <input type="text" id="zip" required>
+    <br>
+    <label for="country">Country:</label>
+    <input type="text" id="country" required>
+    <br>
+    <button type="button" onclick="window.location.href='delivery.html'">Back to Map</button>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+  <script src="js/nav.js" type="module"></script>
+  <script src="js/deliveryinfo.js" type="module"></script>
+  
+  <script>
+    // Function to populate form fields with values from localStorage
+    function populateForm() {
+      const street = localStorage.getItem('selectedStreet');
+      const city = localStorage.getItem('selectedCity');
+      const zip = localStorage.getItem('selectedZip');
+      const country = localStorage.getItem('selectedCountry');
+      
+      if (street) document.getElementById('street').value = street;
+      if (city) document.getElementById('city').value = city;
+      if (zip) document.getElementById('zip').value = zip;
+      if (country) document.getElementById('country').value = country;
+    }
+
+    // Populate form fields when the page loads
+    document.addEventListener('DOMContentLoaded', populateForm);
+  </script>
+</body>
+</html>

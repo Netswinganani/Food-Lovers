@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart with Firebase</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/prod.css" />
+    <link rel="stylesheet" href="css/foot.css" />
+   
+   
+</head>
+<body> 
+    <div class="navbar"></div>
+    <div class="alert-box">
+        <img src="images/error.png" class="alert-img" alt="" />
+        <p class="alert-msg">Error message</p>
+      </div>
+    <div class="loaderbg">
+        <img src="images/loader.gif" class="loader" alt="" />
+      </div>
+      
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="images/nav.png" style="width:100%;">
+        </div>
+        <div class="mySlides">
+            <img src="images/nav2.png" style="width:100%;">
+        </div>
+        <div class="mySlides">
+            <img src="images/nav4.png" style="width:100%;">
+        </div>
+        
+        <a class="prev" onclick="plusDivs(-1)">&#10094;</a>
+        <a class="next" onclick="plusDivs(1)">&#10095;</a>
+    </div> 
+    <h3>-</h3>
+      <main class="product-listing" style="flex: 1;">
+        <div id="advertisement-banner" class="advertisement-banner">
+            <p id="banner-text">
+                SAVE R50! Get Jacobs Instant Coffee Assorted 200g or 230g Refill for ONLY R139.99! *Ends 10 November 2024. Ts&Cs apply. 
+                <a href="#" id="shop-now-link">Shop NOW</a>
+            </p>
+        </div>
+
+    <div class="container">
+        <!-- Sidebar filters -->
+        <aside class="filter-sidebar">
+            <h3>Selected Filters:</h3>
+            <p>On Promotion</p>
+        
+            <h4>Category</h4>
+            <div class="category-list">
+                <button class="category-button" data-category="All">All</button>
+                <button class="category-button" data-category="Oils">Milk, Dairy & Eggs</button>
+                <button class="category-button" data-category="Liquor Store">Liquor Store</button>
+                <button class="category-button" data-category="Bakery">Bakery</button>
+                <button class="category-button" data-category="Cereal">Cereal</button>
+                <button class="category-button" data-category="Vegetables">Vegetables</button>
+                <button class="category-button" data-category="Meat">Meat</button>
+                <button class="category-button" data-category="Fruit">Fruit</button>
+            </div>
+        </aside>
+        
+        
+     
+
+        <!--  Product Listing 
+        <main class="product-listing" style="flex: 1;">
+           <div class="sort-options">
+                <label for="sort">Sort by:</label>
+                <label for="price-range">Select Price Range:</label>
+                <select id="price-range">
+                    <option value="all">All</option>
+                    <option value="under10">Under R10</option>
+                    <option value="10to20">R10 to R20</option>
+                    <option value="over20">Over R20</option>
+                </select>
+                <button id="apply-price-filter">Apply Filter</button>
+                
+                  
+            </aside>
+            </div>-->
+            <div class="product-list">
+                <h2>Products</h2>
+                <!-- Products will be dynamically inserted here -->
+            </div>
+            <div id="products-container"></div>
+
+        </main>
+    </div>
+
+    <div id="side-panel" class="side-panel">
+        <button id="close-panel">Close</button>
+    <h2 id="product-name"></h2>
+        <div class="side-panel-container">
+            <!-- Top Left: Product Images -->
+            <div class="product-images">
+                <img id="main-image" src="images/noimg.jpg" alt="Product Image" style="width:100%">
+                <div id="thumbnails">
+                    <!-- Thumbnails will be added dynamically -->
+                </div>
+            </div>
+    
+            <!-- Top Right: Product Details -->
+            <div class="product-details">
+                
+                <ul id="product-details-list">
+                    <li><strong>Short Description:</strong> <span id="product-short-desc"></span></li>
+                    <li><strong>Description:</strong> <span id="product-description"></span></li>
+                    <li><strong>Actual Price:</strong> <span id="product-actual-price"></span></li>
+                    <li><strong>Discount:</strong> <span id="product-discount"></span></li>
+                    <li><strong>Sell Price:</strong> <span id="product-sell-price"></span></li>
+                    <li><strong>Stock:</strong> <span id="product-stock"></span></li>
+                    <li><strong>Use:</strong> <span id="product-use"></span></li>
+                    <li><strong>Category:</strong> <span id="product-category"></span></li>
+                    <li><strong>Manufacture Date:</strong> <span id="product-manu-date"></span></li>
+                    <li><strong>Expiry Date:</strong> <span id="product-ex-date"></span></li>
+               
+                </ul>
+                
+            </div>
+            
+        </div>
+    <button class="add-to-cart">Add to Cart</button>
+        <!-- Bottom: Other Products -->
+        <div class="other-products-list">
+            <h3>We think you may like these</h3>
+            <div  class="other-product-item" id="other-products-list">
+                <!-- Related products will be added  -->
+            </div>
+        </div>
+       
+    </div>
+    
+    <nav class="navbar"></nav>
+
+   
+    
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js"></script>
+    <script type="module" src="js/editbanner.js" ></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/cart.js"></script>
+    <script type="module" src="js/prod.js" defer></script>
+    <script type="module" src="js/nav.js"></script>
+   
+    
+    <script >
+                        document.addEventListener('DOMContentLoaded', () => {
+            const bannerText = document.getElementById('banner-text');
+            const bannerMessage = localStorage.getItem('bannerMessage');
+            const bannerCategory = localStorage.getItem('bannerCategory');
+                
+            if (bannerMessage && bannerCategory) {
+                bannerText.innerHTML = `${bannerMessage} <a href="prod.html?category=${encodeURIComponent(bannerCategory)}" id="shop-now-link">Shop NOW</a>`;
+            } else {
+                bannerText.textContent = "Welcome to our store!"; // Default message if none found
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const category = params.get('category');
+
+            // Use the category variable to filter and display products
+            if (category) {
+                // Fetch and display products for this category
+                fetchProductsByCategory(category);
+            }else {
+        // Fetch all products or handle the default case
+        document.addEventListener('DOMContentLoaded', () => {
+    displayUsername();
+    
+  });
+        fetchAllProducts(); 
+            }
+});
+
+
+
+
+
+        // Your existing slide show JavaScript
+        let slideIndex = 0;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex].style.display = "block";  
+        }
+
+        function showDivsAuto() {
+            const slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            slides[slideIndex].style.display = "block";  
+            setTimeout(showDivsAuto, 5000); // Change image every 5 seconds
+        }
+
+        showDivsAuto();
+        
+       
+
+    </script>
+    <script src="./js/footr.js" defer></script>
+</body>
+</html>

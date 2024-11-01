@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Purchase Confirmation</title>
+    <link rel="stylesheet" href="css/store.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module" src="./js/firebase.js"></script> <!-- Firebase initialization -->
+    <script type="module" src="./js/pay-in-store.js"></script> <!-- Your custom script -->
+    <script type="module" src="js/nav.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        #qrcode {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            display: inline-block;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar"></nav>
+<h1>Purchase Confirmation</h1>
+<p>Click the button below to confirm your purchase and generate a QR code.</p>
+<button id="confirm-button">Confirm Purchase</button>
+
+<h2>Your QR Code:</h2>
+<div id="qrcode"></div>
+<h2>QR Code Details:</h2>
+<table id="qr-details" border="1" style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody id="qr-details-body">
+        <!-- Product details will be inserted here -->
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><strong>Total Amount:</strong></td>
+            <td id="total-amount"></td>
+        </tr>
+    </tfoot>
+</table>
+<h2>Previously Generated QR Codes:</h2>
+<table id="previous-qr-codes-table" border="1">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Products</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody id="previous-qr-codes-body"></tbody> <!-- Updated ID -->
+</table>
+
+<script type="module">
+import { database } from './firebase.js';
+import { ref, set, get } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js';
+
+
+
+    $(document).ready(function() {
+        console.log('jQuery and QR Code library loaded');
+        fetchPreviousQRCodes(); // Fetch QR codes on page load
+
+        $('#confirm-button').click(async function() {
+            const user = auth.currentUser || JSON.parse(sessionStorage.getItem('user'));
+            if (!user || !user.uid) {
+                alert('No user found. Please sign in.');
+                return;
+            }
+
+            // Dummy data for QR code
+            const qrCodeData = {
+                transactionId: "123456789",
+                amount: "100.00",
+                items: ["Item 1", "Item 2"]
+            };
+
+            // Log the QR code data for debugging
+            console.log('QR Code Data:', qrCodeData);
+
+            // Clear previous QR codes
+            $('#qrcode').empty();
+
+            // Generate QR code using QRCode.js
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: JSON.stringify(qrCodeData),
+                width: 128,
+                height: 128,
+            });
+
+            // Save QR code data to Firebase
+            const qrCodesRef = database.ref(`Users/${user.uid}/qrCodes`);
+            await qrCodesRef.push(qrCodeData);
+            alert('QR code generated and saved!');
+        });
+    });
+
+    // Function to fetch previously generated QR codes from Firebase
+    async function fetchPreviousQRCodes() {
+       
+        let user = JSON.parse(sessionStorage.getItem('user') || null);
+      console.log('User from sessionStorage:', user); // Debugging line
+
+        if (user && user.uid) {
+            const qrCodesRef = database.ref(`Users/${user.uid}/qrCodes`);
+            const snapshot = await qrCodesRef.once('value');
+            const previousQRCodes = snapshot.exists() ? snapshot.val() : {};
+
+            const qrCodesContainer = document.getElementById('previous-qr-codes');
+            qrCodesContainer.innerHTML = ''; // Clear previous QR codes
+
+            for (const key in previousQRCodes) {
+                const qrCodeData = previousQRCodes[key];
+                const qrCodeDiv = document.createElement('div');
+                qrCodeDiv.innerText = `Transaction ID: ${qrCodeData.transactionId}, Amount: ${qrCodeData.amount}`;
+                qrCodesContainer.appendChild(qrCodeDiv);
+            }
+        } else {
+            console.error('No user found.');
+        }
+    }
+</script>
+
+</body>
+</html>

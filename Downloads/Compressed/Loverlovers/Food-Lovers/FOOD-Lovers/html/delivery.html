@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Location</title>
+  <style>
+    /* Basic styles for the map */
+    #map {
+      height: 400px;
+      width: 100%;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .form-container {
+      max-width: 100%;
+      width: calc(100% - 40px); /* Adjust width to match the map */
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+      text-align: left;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .form-group input:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    }
+    .form-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .form-actions button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .form-actions button:hover {
+      background-color: #0056b3;
+    }
+    .form-actions button:focus {
+      outline: none;
+    }
+    .message {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Delivery Location</h1>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="street">Street Address:</label>
+      <input type="text" id="street" placeholder="Street Address">
+    </div>
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" id="city" placeholder="City">
+    </div>
+    <div class="form-group">
+      <label for="zip">Zip Code:</label>
+      <input type="text" id="zip" placeholder="Zip Code">
+    </div>
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" id="country" placeholder="Country">
+    </div>
+    <div class="form-actions">
+      <button id="find-location">Find Location</button>
+    </div>
+    <div class="message">
+      Please verify your location on the map.
+    </div>
+    <div id="map"></div>
+    <div class="form-actions">
+      <button id="confirm-location">Confirm Location</button>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js" defer></script>
+
+  <!-- Google Maps JavaScript API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv4yE5lC8DoNdOUbLXjSt1gUte-QgNyDI" ></script>
+
+  <!-- Your Custom Scripts -->
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/nav.js" type="module"></script>
+  <script src="js/delivery.js" type="module"></script>
+</body>
+</html>
