@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment History</title>
+  
+  <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/payment-history.css" />
+    <style>
+      .transaction {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.payment-info {
+  flex: 1; /* Take up 1 part of the available space */
+  margin-right: 20px; /* Space between payment info and products */
+}
+
+.products-info {
+  flex: 2; /* Take up 2 parts of the available space */
+}
+
+    </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  
+  <h1>Payment History</h1>
+  <div id="payment-history">Loading...</div> 
+  
+  
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+  <script src="js/firebase.js"></script>  
+  <script type="module" src="js/nav.js"></script>
+  <script src="js/payment-history.js" type="module"></script>
+</body>
+</html>
+
+

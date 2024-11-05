@@ -1,0 +1,80 @@
+footer {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+    padding: 20px 0; /* Vertical padding */
+    text-align: center; /* Centered text */
+    position: relative; /* Ensure footer is positioned correctly */
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    
+    max-width: 1200px; /* Limit the width */
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px; /* Side padding */
+}
+
+.logo {
+    width: 150px; /* Logo width */
+    margin-bottom: 20px; /* Space below the logo */
+}
+
+.footer-info {
+    
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+    margin-bottom: 20px; /* Space below footer info */
+}
+
+.company {
+    
+    margin-bottom: 10px; /* Space below company info */
+}
+
+.socials {
+    margin-bottom: 10px; /* Space below social icons */
+}
+
+.social-link {
+    margin: 0 10px; /* Space between social icons */
+}
+
+.footer-ul-container {
+    margin-bottom: auto; /* Space below the links */
+}
+
+.footer-ul {
+    list-style: none; /* Remove list bullets */
+    padding: 0; /* Remove padding */
+    display: flex; /* Flexbox for links */
+    flex-wrap: wrap; /* Wrap links on smaller screens */
+    justify-content: center; /* Center links */
+}
+
+.footer-li {
+    margin: 0 15px; /* Space between links */
+}
+
+.footer-link {
+    text-transform: capitalize;
+  padding: auto;
+  text-decoration: none;
+  color: #1cbc00;
+  font-size: x-large;
+  font-weight: bold;
+  opacity: 0.75;
+  transition: 0.5s;
+}
+
+.footer-link:hover {
+    /* Underline on hover */
+    opacity: 6;
+    font-size: large;
+}
+
+.footer-credit {
+    margin-top: auto; /* Space above credit text */
+    font-size: 0.9em; /* Smaller font size */
+}

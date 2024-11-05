@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Overview</title>
+    <link rel="stylesheet" href="/html/css/sales.css">
+</head>
+<body>
+    <div class="container">
+        <div class="product-list"></div>
+
+        <h1>Sales Overview</h1>
+
+        <h2>Product Performance</h2>
+        <div id="product-performance" class="performance-list"></div>
+
+        <h2>Popular Products</h2>
+        <div id="popular-products" class="popular-list"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+    <script src="./firebase.js"></script> <!-- Your Firebase config -->
+    <script type="module" src="./js/sales.js"></script>
+</body>
+</html>

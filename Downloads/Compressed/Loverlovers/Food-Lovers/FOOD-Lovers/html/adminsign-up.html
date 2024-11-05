@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+    <link rel="stylesheet" href="css/admin.css"> <!-- Link to your CSS file if needed -->
+    
+</head>
+<body>
+   
+    <div class="container"> 
+        <h1>Admin Management</h1>
+       
+        
+        <h2>Create New Admin</h2>
+        <form id="createAdminForm">
+            <input type="text" id="adminNameInput" placeholder="Admin Name" required>
+            <input type="email" id="adminEmailInput" placeholder="Admin Email" required>
+            <input type="password" id="adminPasswordInput" placeholder="Admin Password" required />
+            <button type="submit">Create Admin</button>
+        </form>
+
+        <h2>Admins List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="adminList">
+                <!-- Admins will be populated here -->
+            </tbody>
+        </table>
+
+        <h2>Admin Requests</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="requestList">
+                <!-- Requests will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script type="module" src="./js/adminManagement.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-functions.js"></script>
+</body>
+</html>
+

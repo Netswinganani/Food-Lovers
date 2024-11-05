@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <body>
+        <div class="container">
+            <div class="loader" style="display: none;">Loading...</div>
+            <div class="alert-box">
+                <span class="alert-msg"></span>
+            </div>
+            
+            <h2>Admin Sign-Up / Login</h2>
+            <form id="adminForm">
+                <input type="text" id="adminName" placeholder="Name" required>
+                <input type="email" id="adminEmail" placeholder="Email" required>
+                <input type="password" id="adminPassword" placeholder="Password" required>
+                <input type="checkbox" id="termsAndConditions"> Agree to terms and conditions
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        
+        <script type="module" src="./js/adminform.js"></script>
+    </body>
+    
+</body>
+</html>

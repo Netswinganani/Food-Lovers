@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./css/admindash.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Admin Dashboard</h1>
+        <div class="tabs">
+            <button class="tab-button" onclick="showTab('add-product')">Existing Products</button>
+            <button class="tab-button1" onclick="showTab('existing-products')">Add Product</button>
+            <button class="tab-button2" onclick="showTab('admin-permissions')">Admin Permissions</button>
+            <button class="tab-button2" onclick="showTab('aadmin-permissions')">Store QR</button>
+        </div>
+
+        <div id="add-product" class="tab-content">
+            <iframe src="./modprod.html" frameborder="0"></iframe>
+        </div>
+        <div id="existing-products" class="tab-content" style="display:none;">
+            <iframe src="./addproduct.html" frameborder="0"></iframe>
+        </div>
+        <div id="admin-permissions" class="tab-content" style="display:none;">
+            <iframe src="./adminsign-up.html" frameborder="0"></iframe>
+        </div>
+    </div>
+    <div id="aadmin-permissions" class="tab-content" style="display:none;">
+        <iframe src="./store-purch.html" frameborder="0"></iframe>
+    </div>
+</div>
+    
+    <script>
+function showTab(tabId) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+        tab.style.display = 'none'; // Hide all tabs
+    });
+
+    const activeTab = document.getElementById(tabId);
+    activeTab.style.display = 'block'; // Show the selected tab
+}
+
+// Optionally, you can show the first tab by default
+document.addEventListener('DOMContentLoaded', () => {
+    showTab('add-product');
+});
+
+
+    </script>
+</body>
+</html>

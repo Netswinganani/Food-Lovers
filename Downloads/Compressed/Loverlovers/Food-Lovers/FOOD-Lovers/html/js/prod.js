@@ -224,6 +224,7 @@ const showProductDetails = (product, imageUrls) => {
   const productName = document.getElementById('product-name');
   const productDetailsList = document.getElementById('product-details-list');
   const addToCartButton = document.querySelector('.side-panel .add-to-cart');
+  console.log('Add to Cart Button:', addToCartButton); // Check if button is found
 
   if (!panel || !mainImage || !thumbnailsContainer || !thumbnails || !productName || !productDetailsList || !addToCartButton) {
       console.error('Side panel or required elements not found');
@@ -288,6 +289,21 @@ const displayThumbnails = (imageUrls, thumbnailsContainer) => {
         console.log(`Thumbnail added: ${url}`);
     });
 };
+const showAlert = (msg) => {
+    console.log('showAlert called with message:', msg); // Debug log
+
+    let alertBox = document.querySelector(".alert-box");
+    let alertMsg = document.querySelector(".alert-msg");
+    let alertImg = document.querySelector(".alert-img");
+
+    alertMsg.innerHTML = msg; // Set the alert message
+
+    alertBox.classList.add("show"); // Show the alert box
+
+    setTimeout(() => {
+        alertBox.classList.remove("show"); // Hide the alert after 3 seconds
+    }, 3000);
+};
 
 // Function to update product details
 const updateProductDetails = (product, panel, productDetailsList, addToCartButton) => {
@@ -328,21 +344,25 @@ const updateProductDetails = (product, panel, productDetailsList, addToCartButto
   panel.classList.add('active'); // Open the side panel
 
   // Handle adding the product to the cart
-  addToCartButton.addEventListener('click', () => {
-      addToCart(product);
-      alert('Product added to cart!');
-  }, { once: true });
+  
 
   // Fetch Related products in the same category
   fetchOtherProducts(product.cate, product.key);
   panel.classList.add('active'); // Open the side panel
 
   // Handle adding the product to the cart
-  addToCartButton.addEventListener('click', () => {
-      addToCart(product);
-      alert('Product added to cart!');
-  }, { once: true });
-};
+// Inside your product detail display logic
+addToCartButton.addEventListener('click', () => {
+    
+    addToCart(product).then(() => {
+      showAlert('Product added to cart!');
+    }).catch((error) => {
+        console.error('Error adding to cart:', error);
+        showAlert('Failed to add product to cart.');
+    });
+}, { once: true });
+
+}
 
 // Fetch and display Related products in the same category
 const fetchOtherProducts = async (category, currentProductKey) => {

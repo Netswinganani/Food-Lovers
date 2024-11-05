@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Purchase Confirmation</title>
+    <link rel="stylesheet" href="css/store.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module" src="./js/firebase.js"></script> <!-- Firebase initialization -->
+    <script type="module" src="./js/pay-in-store-admin.js"></script> <!-- Your custom script -->
+    <script type="module" src="js/nav.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        #qrcode {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            display: inline-block;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+<h1>Purchase Confirmation</h1>
+<h2>Pending Purchases</h2>
+<table id="pending-purchases-table" border="1">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="pending-purchases-body"></tbody>
+</table>
+</body>
+</html>

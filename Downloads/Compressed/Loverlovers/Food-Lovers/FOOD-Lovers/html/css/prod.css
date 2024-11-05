@@ -109,7 +109,8 @@ body {
 }
 
 .add-to-cart:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: black; /* Change the entire row background */
+        color: white; /* Change text color to white */
 }
 .product-thumb-search {
   width: 100%; /* Full width for thumbnail images */
@@ -140,6 +141,25 @@ body {
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor on hover */
   border-radius: 20px;
+  position: relative; /* For positioning the glow effect */
+  overflow: hidden; /* Ensure the glow effect is contained */
+}
+@keyframes move-glow {
+  0% {
+      box-shadow: 0 0 5px #06af00, 0 0 10px #06af00, 0 0 20px #06af00;
+  }
+  25% {
+      box-shadow: 9px 9px 7px #354531,9px 9px 9px #354531, 9px 9px 15px #354531;
+  }
+  50% {
+      box-shadow: 0 0 2px #06af00, 0 0 5px #06af00, 0 0 9px #06af00;
+  }
+  75% {
+      box-shadow: -5px -5px 2px #354531, -5px -5px 8px #354531, -5px -5px 10px #354531;
+  }
+  100% {
+      box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  }
 }
 
 .product-info-summary {
@@ -211,7 +231,9 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  animation: move-glow 4s infinite;
+  background-color: black; /* Change the entire row background */
+  color: white; /* Change text color to white */
 }
 
 .category-button {
@@ -226,7 +248,8 @@ button:hover {
 }
 
 .category-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: black; /* Change the entire row background */
+  color: white; /* Change text color to white */
 }
 
 .side-panel-container {
@@ -255,7 +278,8 @@ button:hover {
 
 }
 #product-details-list li:hover {
-  background-color: #eaeaea; /* Change background color on hover */
+  background-color: black; /* Change the entire row background */
+        color: white; /* Change text color to white */
 }
 .product-details {
   width: 45%; /* Keep width for the details container */
@@ -324,6 +348,7 @@ button:hover {
   transition: border 0.3s; /* Smooth transition for hover effect */
 }
 #thumbnails :hover {
+  
   border: 6px solid rgb(46, 131, 0); /* Dark border on hover for better visibility */
 }
 
@@ -351,6 +376,12 @@ button:hover {
 
 /* Hover effect for product items */
 .product-item:hover {
+  border: 5px solid #32a800;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  transition: transform 0.2s ease; /* Smooth transition */
+}
+.other-product-item:hover {
+ 
   transform: scale(1.05); /* Slightly enlarge on hover */
   transition: transform 0.2s ease; /* Smooth transition */
 }

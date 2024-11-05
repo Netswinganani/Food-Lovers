@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.product-management {
+    padding: 20px;
+}
+
+.banner-edit-section {
+    margin: 20px 0;
+  }
+  
+  .banner-edit-section label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .banner-edit-section input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .banner-edit-section button {
+    padding: 10px 15px;
+    background-color: #0056b3; /* Button color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .banner-edit-section button:hover {
+    background-color: #004494; /* Darker shade on hover */
+  }
+  
+    .alert {
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: #f8d7da; /* Light red background */
+        color: #721c24; /* Dark red text */
+        border: 1px solid #f5c6cb; /* Light red border */
+        display: none; /* Initially hidden */
+        position: relative; /* For positioning */
+        width: 100%; /* Full width */
+    }
+   
+.product-list {
+    margin-top: 20px;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modify-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.product-management {
+    padding: 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    width: calc(33% - 20px); /* Three items per row */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.product-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.product-card {
+    display: flex;
+}
+
+.product-image {
+    flex: 1;
+    max-width: 150px;
+}
+
+.product-image img {
+    border: 3px solid rgb(255, 145, 0); /* Set the border to light green and make it bold */
+    width: 100%;
+    height: auto;
+}
+
+.product-info {
+    /*border: 3px solid rgb(233, 147, 8);  Set the border to light green and make it bold */
+  
+    flex: 2;
+    padding: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modify-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 3px solid lightgreen; /* Set the border to light green and make it bold */
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

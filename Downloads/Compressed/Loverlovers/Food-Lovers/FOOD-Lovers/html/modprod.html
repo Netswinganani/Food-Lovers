@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Products</title>
+    <link rel="stylesheet" href="./css/mprod.css"> <!-- Link your CSS file -->
+<style> .stock-low {
+    color: red; /* Red for low stock (< 5) */
+    font-weight: bold;
+}
+
+.stock-warning {
+    color: orange; /* Amber for warning stock (< 15) */
+    font-weight: bold;
+}
+
+.stock-normal {
+    color: green; /* Green for normal stock (>= 20) */
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+    <div id="stock-alert" class="alert" style="display: none;">
+        <span id="stock-alert-message"></span>
+    </div>
+    
+    <div class="product-management">
+       
+        <div id="banner-edit-section" class="banner-edit-section">
+            <h2>Edit Banner Information</h2>
+            <form id="banner-edit-form">
+                <label for="banner-message">Banner Message:</label>
+                <input type="text" id="banner-message" value="SAVE R50! Get Jacobs Instant Coffee Assorted 200g or 230g Refill for ONLY R139.99! *Ends 10 November 2024. Ts&Cs apply." required>
+        
+                <label for="banner-category">Category:</label>
+                <input type="text" id="banner-category" required placeholder="Enter category name (proteins)">
+        
+        
+                <button type="submit">Update Banner</button>
+            </form>
+            <div id="other-products-list"></div>
+        </div> 
+        <h1>Manage Products</h1>
+        <div class="product-list"></div>
+        <button id="add-product-btn">Add New Product</button>
+    </div>
+    
+
+    <!-- Product Form Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2 id="modal-title">Add Product</h2>
+            <input type="text" id="product-name" placeholder="Product Name" required>
+            <input type="text" id="short-desc" placeholder="Short Description" required>
+            <input type="text" id="description" placeholder="Description" required>
+            <input type="number" id="actual-price" placeholder="Actual Price" required>
+            <input type="number" id="discount" placeholder="Discount">
+            <input type="number" id="sell-price" placeholder="Sell Price" required>
+            <input type="number" id="stock" placeholder="Stock" required>
+            <input type="text" id="use" placeholder="Use" required>
+            <input type="text" id="cate" placeholder="Category" required>
+            <input type="date" id="manuDate" required>
+            <input type="date" id="exDate" required>
+            <input type="text" id="prescription" placeholder="Prescription" required>
+            <input type="file" id="link-img-1" accept="image/*">
+            <input type="file" id="link-img-2" accept="image/*">
+            <input type="file" id="link-img-3" accept="image/*">
+            <input type="file" id="link-img-4" accept="image/*">
+            <button id="submit-product-btn">Submit</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js"></script>
+    <script type="module" src="./js/editbanner.js"></script>
+    <script type="module" src="./firebase.js"></script> <!-- Your Firebase configuration -->
+    <script type="module" src="./js/mod-prod.js"></script> <!-- Your JavaScript file -->
+    
+</body>
+</html>

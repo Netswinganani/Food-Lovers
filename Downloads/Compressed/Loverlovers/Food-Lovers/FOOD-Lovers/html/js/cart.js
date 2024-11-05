@@ -7,10 +7,22 @@ const getCurrentUser = () => {
   return JSON.parse(sessionStorage.getItem('user'));
 };
 
+// Function to show/hide loader
+const toggleLoader = (isVisible) => {
+  const loader = document.querySelector(".loader");
+ 
+  loader.style.display = isVisible ? 'block' : 'none';
+};
+
+
 // Function to get cart from Firebase for the current user
 const getCartFromFirebase = async () => {
   const user = getCurrentUser();
   if (!user) return {};
+
+  toggleLoader(true); // Show loader
+
+    try {
 
   const cartRef = ref(db, `Users/${user.uid}/cart`);
   const snapshot = await get(cartRef);
@@ -18,6 +30,14 @@ const getCartFromFirebase = async () => {
   
   console.log('Fetched cart:', cart); // Log the fetched cart
   return cart;
+} catch (error) {
+  console.error('Error fetching cart:', error);
+  showAlert('Error fetching cart. Please try again.');
+  return {};
+  
+} finally {
+  toggleLoader(false); // Hide loader
+}
   
 };
 
@@ -31,7 +51,7 @@ const saveCartToFirebase = async (cart) => {
   console.log('Cart saved to Firebase:', cart); // Log the saved cart
 };
 
-// Function to show a success alert
+// Function to show alert messages
 const showAlert = (message) => {
   const alertDiv = document.createElement('div');
   alertDiv.className = 'alert success-alert';
@@ -40,7 +60,7 @@ const showAlert = (message) => {
   document.body.appendChild(alertDiv);
   
   setTimeout(() => {
-      alertDiv.remove();
+    alertDiv.remove();
   }, 3000);
 };
 
@@ -74,11 +94,13 @@ const addToCart = async (product) => {
 
 // Function to render cart
 const renderCart = async () => {
+  toggleLoader(true); // Show loader while rendering cart
   const cart = await getCartFromFirebase();
   const cartElement = document.getElementById('cart-body');
   
   if (!cartElement) {
     console.error('Cart element not found');
+    toggleLoader(false); // Hide loader if cart element is not found
     return;
   }
   
@@ -119,6 +141,8 @@ const renderCart = async () => {
 
   document.getElementById('total-discount').textContent = `Total Discount: R${totalDiscount.toFixed(2)}`;
   document.getElementById('total-amount').textContent = `Total Amount: R${(total).toFixed(2)}`;
+
+  toggleLoader(false); // Hide loader after rendering
 };
 
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Information</title>
+  <link rel="stylesheet" href="css/payment.css">
+  <script>
+    // Function to format card number input
+    function formatCardNumber(event) {
+      const input = event.target;
+      const value = input.value.replace(/\D/g, ''); // Remove non-digit characters
+      const formattedValue = value.match(/.{1,4}/g)?.join(' ') || '';
+      input.value = formattedValue.trim(); // Update input value with formatted value
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  <h1>Payment Information</h1>
+  <form id="payment-form">
+    <label for="payment-method-credit">Credit/Debit Card</label>
+    <input type="radio" id="payment-method-credit" name="payment-method" value="credit" checked>
+    
+    <div id="credit-card-info">
+      <label for="card-number">Card Number:</label>
+      <input type="text" id="card-number" required maxlength="19" oninput="formatCardNumber(event)" placeholder="1234 5678 9012 3456">
+
+      <label for="expiration-date">Expiration Date (MM/YY):</label>
+      <input type="text" id="expiration-date" placeholder="MM/YY" required>
+      
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" required>
+
+      <label for="cardholder-name">Cardholder's Name:</label>
+      <input type="text" id="cardholder-name" required>
+    </div>
+    
+    <label for="payment-method-paypal">PayPal</label>
+    <input type="radio" id="payment-method-paypal" name="payment-method" value="paypal">
+
+    <div id="paypal-info" style="display:none;">
+      <p>Log in to PayPal to complete your payment.</p>
+    </div>
+
+    <button type="submit">Submit Payment</button>
+  </form>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
+  <script src="js/payment.js" type="module"></script>
+</body>
+</html>

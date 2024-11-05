@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Medicomm: Sell</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/seller.css" />
+  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+  <div class="become-seller">
+    <p class="heading-1">Become a Seller</p>
+    <p class="desc">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam
+      suscipit labore et. Ipsum minima excepturi repellat corporis facilis
+      velit est inventore eaque cum accusamus, cumque doloribus fugiat
+      reprehenderit molestiae quam.
+    </p>
+    <button class="btnseller" id="apply-btn">Apply for Business Account</button>
+  </div>
+
+  <div class="apply-form hide">
+    <h1 class="heading-2">Application Form:</h1>
+    <input type="text" id="business-name" class="business-name" autocomplete="off" placeholder="Business / Company / Shop Name" required /><br />
+    <textarea id="business-add" class="business-add" placeholder="Address" required></textarea><br />
+    <input type="number" id="pincode" class="pincode" autocomplete="off" placeholder="Pincode" required /><br />
+    <textarea id="about" class="about" placeholder="About your business" required></textarea><br />
+    <input type="tel" id="number" class="number" autocomplete="off" placeholder="Contact Number" required /><br />
+    <input type="checkbox" id="terms-and-cond" required class="checkbox" />
+    <label for="terms-and-cond">Agree to Our <a href="#">terms and conditions</a></label><br />
+    <button id="apply-form-btn" class="sub-btn">Apply</button>
+  </div>
+
+  <div class="alert-box" style="display: none;">
+    <span class="alert-msg"></span>
+</div>
+
+
+  
+<!--you missed this ??? 
+  <div class="alert-box">
+    <img src="images/error.png" class="alert-img" alt="Error" />
+    <p class="alert-msg">Error message</p>
+  </div>-->
+
+  <!-- Include external JavaScript files -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js"></script>
+
+
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/token.js" ></script>
+  <script type="module" src="js/createProduct.js" ></script> <!-- Ensure this script is loaded before seller.js -->
+  <script type="module" src="js/firebase.js" ></script>
+  <script type="module" src="js/seller.js" ></script> <!-- Make sure this script is loaded last -->
+</body>
+</html>

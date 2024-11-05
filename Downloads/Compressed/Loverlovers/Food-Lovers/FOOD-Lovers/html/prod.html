@@ -14,9 +14,10 @@
 <body> 
     <div class="navbar"></div>
     <div class="alert-box">
-        <img src="images/error.png" class="alert-img" alt="" />
-        <p class="alert-msg">Error message</p>
+        <img src="/images/error.png" class="alert-img" alt="" />
+        <p class="alert-msg"></p>
       </div>
+  
     <div class="loaderbg">
         <img src="images/loader.gif" class="loader" alt="" />
       </div>
@@ -82,7 +83,7 @@
                   
             </aside>
             </div>-->
-            <div class="product-list">
+            <div class="product-list" style="background-color: none;">
                 <h2>Products</h2>
                 <!-- Products will be dynamically inserted here -->
             </div>
@@ -123,7 +124,8 @@
             </div>
             
         </div>
-    <button class="add-to-cart">Add to Cart</button>
+        <button class="add-to-cart">Add to Cart</button>
+
         <!-- Bottom: Other Products -->
         <div class="other-products-list">
             <h3>We think you may like these</h3>
@@ -137,7 +139,7 @@
     <nav class="navbar"></nav>
 
    
-    
+    <script type="module" src="js/token.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js"></script>
@@ -146,9 +148,30 @@
     <script type="module" src="js/cart.js"></script>
     <script type="module" src="js/prod.js" defer></script>
     <script type="module" src="js/nav.js"></script>
+    
    
     
     <script >
+           document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButton = document.querySelector('.add-to-cart');
+            const alertBox = document.querySelector('.alert-box');
+            const alertMsg = document.querySelector('.alert-msg');
+
+            const showAlert = (message) => {
+                alertMsg.textContent = message;
+                alertBox.style.display = 'block';
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 3000); // Hide alert after 3 seconds
+            };
+
+            if (addToCartButton) {
+                addToCartButton.addEventListener('click', () => {
+                    // Add your cart logic here
+                    alert('Item added to cart!');
+                });
+            }
+        
                         document.addEventListener('DOMContentLoaded', () => {
             const bannerText = document.getElementById('banner-text');
             const bannerMessage = localStorage.getItem('bannerMessage');
@@ -178,8 +201,8 @@
 });
 
 
-
-
+});
+           
 
         // Your existing slide show JavaScript
         let slideIndex = 0;
@@ -213,7 +236,7 @@
         showDivsAuto();
         
        
-
+    
     </script>
     <script src="./js/footr.js" defer></script>
 </body>

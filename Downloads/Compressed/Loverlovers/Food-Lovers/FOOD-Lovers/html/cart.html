@@ -25,6 +25,34 @@
       border-radius: 10px;
       transition: box-shadow 0.3s ease; /* Smooth transition for box shadow */
     }
+      /* Styles for table headers */
+      #cart-container table th:nth-child(1) {
+            background-color: green; /* Product */
+            color: white; /* Text color for better contrast */
+        }
+        #cart-container table th:nth-child(2) {
+            background-color: blue; /* Price */
+            color: white;
+        }
+        #cart-container table th:nth-child(3) {
+            background-color: orange; /* Quantity */
+            color: black;
+        }
+        #cart-container table th:nth-child(4) {
+            background-color: yellow; /* Total */
+            color: black;
+        }
+          /* Hover effects for headers and cells */
+     /* Row hover effect */
+     #cart-container table tr:hover {
+        background-color: black; /* Change the entire row background */
+        color: white; /* Change text color to white */
+    }
+    
+    /* Specific styling for table headers during hover */
+    #cart-container table th {
+        transition: background-color 0.3s ease; /* Smooth transition for headers */
+    }
 
     .quantity-control {
       display: flex;
@@ -48,7 +76,17 @@
 </head>
 <body>
   <nav class="navbar"></nav>
-  <div class="alert" id="alert-div"></div>
+  <div class="alert" id="showAlert" style="display: none;">
+    <img src="images/error.png" class="alert-img" alt="" />
+    <p class="alert-msg">Error message</p>
+</div>
+
+  
+
+  <div class="loader" id="cart-loader" style="display: none;">
+    <img src="images/loader.gif" class="loader" alt="Loading..." />
+</div>
+
 
   <div class="cart-container">
     <h1>Shopping Cart</h1>
