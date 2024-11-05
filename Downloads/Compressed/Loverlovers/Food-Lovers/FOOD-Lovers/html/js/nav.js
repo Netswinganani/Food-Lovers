@@ -120,7 +120,7 @@ const toggleUserPopup = () => {
         actionBtn.innerHTML = "Log Out";
         actionBtn.addEventListener("click", () => {
           sessionStorage.clear();
-          location.reload();
+          location.href = "./index.html"; //solve for errorvFailed to load resource: net::ERR_CONNECTION_RESET
         });
       } else {
         popupText.innerHTML = "Log In to Place Order";

@@ -1,0 +1,230 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #1fcc2b4a;
+   
+  }
+  
+  /* Container that holds all elements */
+  .container {
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+  }
+  
+  
+  
+  
+  .logo {
+    height: 110px;
+  display: block;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  }
+  
+  h2 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Fields */
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Checkbox containers */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .checkbox-container label {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .checkbox-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .checkbox-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 40px;
+    background: #169001;
+    border-radius: 30px;
+    color: #fff;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 30px 0;
+
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link to login */
+  .link {
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Alert Box for errors */
+  .alert-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+    position: relative;
+  }
+  
+  .alert-img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .alert-msg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* Loader */
+  .loaderbg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Loader image */
+  .loader {
+    width: 50px;
+    height: 50px;
+  }
+  
+  /* Show alert box when visible */
+  .alert-box.show {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 500px) {
+    .container {
+      padding: 20px;
+      width: 90%;
+    }
+  
+    .logo {
+      max-width: 120px;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .submit-btn {
+      padding: 10px;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Additional refinements */
+  input[type="email"], input[type="text"], input[type="password"] {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  input[type="checkbox"] {
+    accent-color: #007bff; /* Change the checkbox color */
+  }
+  
+  /* Minor spacing tweaks */
+  input, .submit-btn {
+    margin-bottom: 12px;
+  }
+  
+  /* Floating alert box for error messages */
+  .alert-box {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Focus state improvements */
+  input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 86, 179, 0.5);
+  }
+  

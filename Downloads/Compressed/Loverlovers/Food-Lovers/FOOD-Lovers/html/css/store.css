@@ -11,17 +11,17 @@ body {
 /* Header Styles */
 h1 {
     text-align: center;
-    color: #007BFF;
+    color: #1a4e15;
 }
 
 h2 {
     margin-top: 30px;
-    color: #333;
+    color: #333;/*Gradient*/
 }
 
 /* Button Styles */
 button {
-    background-color: #007BFF;
+    background-color: #069b01;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -32,7 +32,9 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: black; /* Change the entire row background */
+    color: white; /* Change text color to white */
+    opacity: 5;
 }
 
 /* QR Code Container */
@@ -71,15 +73,30 @@ th, td {
     padding: 8px;
     text-align: left;
 }
-
+/*
 th {
-    background-color: #007BFF;
+    background-color: #30a800;
+    color: white;
+    transition: background-color 0.3s ease;
+}*/
+
+tr:hover {
+    background-color: black; /* Change the entire row background */
     color: white;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
-}
+.loader {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 300px;
+    border-radius: 30px;
+    border: 1px solid #17d3234a;
+    display: none;
+    background: #fff;
+  }
 
 /* Responsive Styles */
 @media (max-width: 600px) {

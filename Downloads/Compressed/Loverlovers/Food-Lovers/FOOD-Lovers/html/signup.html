@@ -6,55 +6,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/forrm.css" />
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
   </head>
   <body>
-    
-    
-        <input type="text" autocomplete="off" id="name" placeholder="Name" />
-        <input type="email" autocomplete="off" id="email" placeholder="Email" />
-        <input
-          type="password"
-          autocomplete="off"
-          id="password"
-          placeholder="Password"
-        /><input
-        type="password"
-        autocomplete="off"
-        id="paassword"
-        placeholder="Confirm Password"
-      />
-        <input
-          type="text"
-          autocomplete="off"
-          id="number"
-          placeholder="Phone Number"
-        />
-        <input type="checkbox" checked class="checkbox" id="terms-and-cond" />
-        <label for="terms-and-cond"
-          >Agree to our <a href="">terms and conditions</a></label
-        ><br />
-        <input type="checkbox" class="checkbox" id="notification" />
-        <label for="notification"
-          >Recieve upcoming offers and events mails</label
-        >
-        <button class="submit-btn">Create Account</button>
-      </div>
-      <a href="./login.html" class="link"
-        >Already have an account? Login here</a
-      >
-    </div>
-    <div class="loaderbg">
-      <img src="images/loader.gif" class="loader" alt="" />
-    </div>
     <div class="container">
-      <img src="images/headerlogo.jpg" class="logo" alt="" />
-      <div>
-    <div class="alert-box">
-      <img src="images/error.png" class="alert-img" alt="" />
-      <p class="alert-msg">Error message</p>
+      <!-- Logo Container -->
+      <div class="logo-container">
+        <img src="images/headerlogo.jpg" class="logo" alt="Logo" />
+      </div>
+  
+      <!-- Form Container -->
+      <div class="form-container">
+        <h2>Create Account</h2>
+        <form id="signup-form">
+          <input type="text" autocomplete="off" id="name" placeholder="Name" />
+          <input type="email" autocomplete="off" id="email" placeholder="Email" />
+          <input type="password" autocomplete="off" id="password" placeholder="Password" />
+          <input type="password" autocomplete="off" id="paassword" placeholder="Confirm Password" />
+          <input type="text" autocomplete="off" id="number" placeholder="Phone Number" />
+  
+          <!-- Terms and Notifications Checkbox -->
+          <div class="checkbox-container">
+            <input type="checkbox" checked class="checkbox" id="terms-and-cond" />
+            <label for="terms-and-cond">Agree to our <a href="#">terms and conditions</a></label>
+          </div>
+          
+          <div class="checkbox-container">
+            <input type="checkbox" class="checkbox" id="notification" />
+            <label for="notification">Receive upcoming offers and events mails</label>
+          </div>
+  
+          <!-- Submit Button -->
+          <button type="button" class="submit-btn">Create Account</button>
+        </form>
+  
+        <!-- Login Link -->
+        <a href="./login.html" class="link">Already have an account? Login here</a>
+      </div>
+  
+      <!-- Alert Box (Hidden by default) -->
+      <div class="alert-box">
+        <img src="images/error.png" class="alert-img" alt="Error" />
+        <p class="alert-msg">Error message</p>
+      </div>
+  
+      <!-- Loader (Hidden by default) -->
+      <div class="loaderbg">
+        <img src="images/loader.gif" class="loader" alt="Loading" />
+      </div>
     </div>
+  
+    <!-- Scripts -->
     <script src="js/form.js" type="module"></script>
     <script src="js/token.js"></script>
   </body>
+  
 </html>

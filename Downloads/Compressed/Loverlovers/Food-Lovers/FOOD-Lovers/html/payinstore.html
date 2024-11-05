@@ -35,6 +35,16 @@
 </head>
 <body>
     <nav class="navbar"></nav>
+    <div class="alert" id="showAlert" style="display: none;">
+        <img src="images/error.png" class="alert-img" alt="" />
+        <p class="alert-msg">Error message</p>
+    </div>
+    
+      
+    
+      <div class="loader" id="cart-loader" style="display: none;">
+        <img src="./images/loader.gif" class="loader" alt="Loading..." />
+    </div>
 <h1>Purchase Confirmation</h1>
 <p>Click the button below to confirm your purchase and generate a QR code.</p>
 <button id="confirm-button">Confirm Purchase</button>
@@ -45,8 +55,8 @@
 <table id="qr-details" border="1" style="border-collapse: collapse; width: 100%; margin-top: 20px;">
     <thead>
         <tr>
-            <th>Product Name</th>
-            <th>Price</th>
+            <th style=" background-color: #e79702; color: white; transition: background-color 0.3s ease;">Product Name</th>
+            <th style=" background-color: #e79702; color: white; transition: background-color 0.3s ease;">Price</th>
         </tr>
     </thead>
     <tbody id="qr-details-body">
@@ -63,9 +73,9 @@
 <table id="previous-qr-codes-table" border="1">
     <thead>
         <tr>
-            <th>Transaction ID</th>
-            <th>Products</th>
-            <th>Total Amount</th>
+            <th style=" background-color: #01b30a; color: white; transition: background-color 0.3s ease;">Transaction ID</th>
+            <th style=" background-color: #01b30a; color: white; transition: background-color 0.3s ease;">Products</th>
+            <th style=" background-color: #01b30a; color: white; transition: background-color 0.3s ease;">Total Amount</th>
         </tr>
     </thead>
     <tbody id="previous-qr-codes-body"></tbody> <!-- Updated ID -->

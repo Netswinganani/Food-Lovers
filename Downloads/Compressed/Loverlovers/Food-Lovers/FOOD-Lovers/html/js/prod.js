@@ -13,10 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     fetchProducts();
   });
+  const getCurrentUser = () => {
+    return JSON.parse(sessionStorage.getItem('user'));
+  };
   
   function displayUsername() {
-    const user = auth.currentUser;
-    const usernameElement = document.getElementById('username');
+    const user = getCurrentUser();
+    const usernameElement = document.getElementById('user');
   
     if (user && user.displayName) {
       // Assuming you have an element with ID 'username' to display the name

@@ -404,30 +404,12 @@ body {
   cursor: pointer;
   opacity: 0;
   font-size: 15px;
-  position: relative; /* For positioning the glow effect */
-  overflow: hidden; /* Ensure the glow effect is contained */
+ 
 }
 /*
 .cart-container:hover {
   animation: move-glow 4s infinite;  Apply the moving glow effect on hover 
 }*/
-@keyframes move-glow {
-  0% {
-      box-shadow: 0 0 5px #06af00, 0 0 10px #06af00, 0 0 20px #06af00;
-  }
-  25% {
-      box-shadow: 9px 9px 7px #354531,9px 9px 9px #354531, 9px 9px 15px #354531;
-  }
-  50% {
-      box-shadow: 0 0 2px #06af00, 0 0 5px #06af00, 0 0 9px #06af00;
-  }
-  75% {
-      box-shadow: -5px -5px 2px #354531, -5px -5px 8px #354531, -5px -5px 10px #354531;
-  }
-  100% {
-      box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-  }
-}
 
 .product-card-home:hover .card-btn-home {
   animation: move-glow 4s infinite;

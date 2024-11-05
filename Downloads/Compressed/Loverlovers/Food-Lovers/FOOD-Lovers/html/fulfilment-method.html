@@ -7,18 +7,21 @@
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/product.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/buttonhover.css" />
   <style>
     /* Basic styles for fulfilment methods layout */
     .fulfilment-container {
       width: 80%;
       margin: 20px auto;
-      text-align: center;
+      text-align: left;
+      
     }
 
     .fulfilment-option {
       margin: 20px 0;
       padding: 20px;
-      border: 1px solid #ddd;
+      border: 1px solid #ffc400;
+      background-color: lightgreen;
       border-radius: 5px;
       cursor: pointer;
     }
@@ -58,6 +61,7 @@
         <li>Track your order online.</li>
         <li>Fast and reliable delivery.</li>
       </ul>
+      <img src="images/Free fast delivery.jpg" alt="Free fast delivery" />
       <button class="proceed-button" onclick="selectOption('delivery')">Select Delivery</button>
     </div>
 
@@ -69,6 +73,7 @@
         <li>Immediate access to your purchase.</li>
         <li>Opportunity to view other products in-store.</li>
       </ul>
+      <img src="images/Shopping Cart.jpg" alt="Shopping Cart"  />
       <button class="proceed-button" onclick="selectOption('collect')">Select Collect in Store</button>
     </div>
   </div>
