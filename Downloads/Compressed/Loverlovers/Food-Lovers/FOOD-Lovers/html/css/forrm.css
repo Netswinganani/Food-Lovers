@@ -21,7 +21,7 @@
   /* Container that holds all elements */
   .container {
     align-items: center;
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
     padding: 30px;
     background-color: #fff;
@@ -35,11 +35,12 @@
   
   
   .logo {
-    height: 110px;
+  height: 130px;
   display: block;
   margin-top: 100px;
   margin-bottom: 30px;
-  margin-left: 50px;
+  margin-left: 30px;
+ border-radius: 5%;
   }
   
   h2 {
@@ -79,6 +80,16 @@
   .checkbox-container label {
     font-size: 0.9rem;
     color: #555;
+  }
+  label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #383838;
+  }
+  
+  label a {
+    color: #383838;
   }
   
   .checkbox-container a {
@@ -120,32 +131,51 @@
     margin-top: 15px;
     color: #007bff;
     text-decoration: none;
+     text-align: center;
   }
   
   .link:hover {
     text-decoration: underline;
   }
   
-  /* Alert Box for errors */
   .alert-box {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 5px;
-    display: none; /* Hidden by default */
-    position: relative;
+    width: 310px;
+    height: 310px;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 100px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 1s;
+  }
+  
+  .alert-box.show {
+    opacity: 1;
+    pointer-events: all;
+    top: 52%;
   }
   
   .alert-img {
-    width: 20px;
-    margin-right: 10px;
+    display: block;
+    height: 60px;
+    margin-top: 25%;
+    margin-left: 38%;
+    margin-bottom: 10%;
   }
   
   .alert-msg {
-    display: inline-block;
-    vertical-align: middle;
+    color: #e24c4b;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
   }
+  
   
   /* Loader */
   .loaderbg {

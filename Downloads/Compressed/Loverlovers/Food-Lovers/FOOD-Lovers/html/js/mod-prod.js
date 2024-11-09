@@ -1,18 +1,20 @@
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js'; 
-import { getDatabase, ref, set, remove, onValue } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js'; 
-import { storage, database } from './firebase.js';  // Import your Firebase configuration
+// Import necessary Firebase functions
+import { getDatabase, ref, set, push, onValue, remove } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js';
+import { storage, database } from './firebase.js'; // Assuming your Firebase initialization is in firebase.js
 
-const db = getDatabase();
-
+// DOM Elements
 const productModal = document.getElementById('product-modal');
 const closeModal = document.getElementById('close-modal');
 const productList = document.querySelector('.product-list');
-
-document.getElementById('add-product-btn').addEventListener('click', openModal);
-closeModal.addEventListener('click', closeProductModal);
-document.getElementById('submit-product-btn').addEventListener('click', addOrUpdateProduct);
+const addProductBtn = document.getElementById('add-product-btn');
 
 let currentProductKey = null; // To track if we are updating an existing product
+
+// Event Listeners
+addProductBtn.addEventListener('click', openModal);
+closeModal.addEventListener('click', closeProductModal);
+document.getElementById('submit-product-btn').addEventListener('click', addOrUpdateProduct);
 
 // Open modal for adding/updating product
 function openModal(product = null) {
@@ -67,34 +69,67 @@ function clearProductForm() {
 
 // Add or update product
 async function addOrUpdateProduct() {
-    const productData = {
-        name: document.getElementById('product-name').value,
-        shortDesc: document.getElementById('short-desc').value,
-        description: document.getElementById('description').value,
-        actualPrice: document.getElementById('actual-price').value,
-        discount: document.getElementById('discount').value,
-        sellPrice: document.getElementById('sell-price').value,
-        stock: document.getElementById('stock').value,
-        use: document.getElementById('use').value,
-        cate: document.getElementById('cate').value,
-        manuDate: document.getElementById('manuDate').value,
-        exDate: document.getElementById('exDate').value,
-        prescription: document.getElementById('prescription').value,
-        images: [] // Initialize an empty array for images
-    };
-    const imageFiles = document.getElementById('image-input').files; // Assuming you have an input for images
+    const productName = document.getElementById('product-name').value;
+    const shortDesc = document.getElementById('short-desc').value;
+    const description = document.getElementById('description').value;
+    const actualPrice = parseFloat(document.getElementById('actual-price').value);
+    const discount = parseFloat(document.getElementById('discount').value);
+    const sellPrice = parseFloat(document.getElementById('sell-price').value);
+    const stock = parseInt(document.getElementById('stock').value, 10);
+    const use = document.getElementById('use').value;
+    const cate = document.getElementById('cate').value;
+    const manuDate = document.getElementById('manuDate').value;
+    const exDate = document.getElementById('exDate').value;
+    const prescription = document.getElementById('prescription').value;
 
-    if (imageFiles.length > 0) {
-        for (const file of imageFiles) {
-            const storageRef = ref(storage, `images/${file.name}`);
-            await uploadBytes(storageRef, file);
-            const downloadURL = await getDownloadURL(storageRef);
-            productData.images.push(downloadURL); // Store the download URL in the images array
-        }
+    // Validate the discount and actual price
+    const calculatedActualPrice = calculateActualPrice(sellPrice, discount);
+    if (actualPrice !== calculatedActualPrice) {
+        alert(`Actual price should be R${calculatedActualPrice.toFixed(2)} based on the discount.`);
+        return;
     }
 
+    const imageInputs = [
+        document.getElementById('link-img-1'),
+        document.getElementById('link-img-2'),
+        document.getElementById('link-img-3'),
+        document.getElementById('link-img-4')
+    ];
+
+    // Initialize an array to hold image URLs
+    let imageUrls = [];
+
     try {
-        // Save or update product data in Realtime Database
+        // Upload new images if any
+        for (const input of imageInputs) {
+            if (input.files.length > 0) {
+                const file = input.files[0];
+                const fileName = `${Date.now()}_${file.name}`; // Create a unique file name
+                const fileRef = storageRef(storage, `images/${fileName}`);
+                await uploadBytes(fileRef, file);
+                const downloadURL = await getDownloadURL(fileRef);
+                imageUrls.push(downloadURL); // Capture image URLs
+            }
+        }
+
+        // Construct product data
+        const productData = {
+            name: productName,
+            shortDesc: shortDesc,
+            description: description,
+            images: imageUrls, // Add image URLs if any
+            actualPrice: calculatedActualPrice,
+            discount: discount,
+            sellPrice: sellPrice,
+            stock: stock,
+            use: use,
+            cate: cate,
+            manuDate: manuDate,
+            exDate: exDate,
+            prescription: prescription
+        };
+
+        // Save or update product data
         const productRef = ref(database, 'products/' + (currentProductKey ? currentProductKey : Date.now()));
         await set(productRef, productData);
         alert(currentProductKey ? 'Product updated successfully!' : 'Product added successfully!');
@@ -107,44 +142,20 @@ async function addOrUpdateProduct() {
     }
 }
 
+// Calculate the actual price based on the sell price and discount
+function calculateActualPrice(sellPrice, discount) {
+    return sellPrice - (sellPrice * (discount / 100));
+}
 
+// Fetch products from the database
 const fetchProducts = () => {
-    const productRef = ref(db, 'products');
+    const productRef = ref(database, 'products');
     productList.innerHTML = '<p>Loading products...</p>'; // Loading state
     onValue(productRef, (snapshot) => {
         const products = snapshot.val();
         displayProducts(products);
-        checkStockLevels(products);
     });
 };
-
-// Function to check stock levels of products
-const checkStockLevels = (products) => {
-    const lowStockProducts = Object.keys(products).filter(productId => {
-        return products[productId].stock < 5; // Check if stock is below 5
-    });
-
-    if (lowStockProducts.length > 0) {
-        showStockAlert(`Warning: one or more product(s) Stock levels is low in your   Inventory`);
-    } else {
-        hideStockAlert();
-    }
-};
-
-// Function to show stock alert banner
-const showStockAlert = (message) => {
-    const alertDiv = document.getElementById('stock-alert');
-    const alertMessage = document.getElementById('stock-alert-message');
-    alertMessage.textContent = message;
-    alertDiv.style.display = 'block'; // Show the alert
-};
-
-// Function to hide stock alert banner
-const hideStockAlert = () => {
-    const alertDiv = document.getElementById('stock-alert');
-    alertDiv.style.display = 'none'; // Hide the alert
-};
-
 
 // Display products on the page
 const displayProducts = (products) => {
@@ -155,17 +166,6 @@ const displayProducts = (products) => {
             const productItem = document.createElement('div');
             productItem.className = 'product-item';
             const productImage = (product.images && product.images.length > 0) ? product.images[0] : 'images/noimg.jpg';
-            
-             // Determine stock level class
-             let stockClass = '';
-             const stock = product.stock;
-             if (stock < 5) {
-                 stockClass = 'stock-low';
-             } else if (stock < 15) {
-                 stockClass = 'stock-warning';
-             } else {
-                 stockClass = 'stock-normal';
-             }
 
             productItem.innerHTML = `
                 <div class="product-card">
@@ -176,10 +176,9 @@ const displayProducts = (products) => {
                         <h3>${product.name}</h3>
                         <p>${product.shortDesc}</p>
                         <p><strong>Price:</strong> R${Number(product.sellPrice).toFixed(2)}</p>
-                        <p class="${stockClass}"><strong>Stock:</strong> ${product.stock}</p>
-                        <p><strong>Category:</strong> ${product.cate}</p>
-                        <button class="modify-btn" onclick="openModal({ ...${JSON.stringify(product)}, key: '${key}' })">Modify</button>
-                        <button class="delete-btn" onclick="deleteProduct('${key}')">Delete</button>
+                        <p><strong>Stock:</strong> ${product.stock}</p>
+                        <button class="modify-btn" data-key="${key}">Modify</button>
+                        <button class="delete-btn" data-key="${key}">Delete</button>
                     </div>
                 </div>
             `;
@@ -187,7 +186,7 @@ const displayProducts = (products) => {
             productList.appendChild(productItem);
         });
 
-        // Add event listeners after appending items
+        // Add event listeners for modify and delete buttons
         document.querySelectorAll('.modify-btn').forEach(button => {
             button.addEventListener('click', (e) => {
                 const key = e.target.dataset.key;
@@ -202,26 +201,22 @@ const displayProducts = (products) => {
             });
         });
     } else {
-        productList.innerHTML = '<p>No products found.</p>';
+        productList.innerHTML = '<p>No products available.</p>';
     }
 };
 
-
-
-// Delete product
-const deleteProduct = async (key) => {
-    if (confirm('Are you sure you want to delete this product?')) {
-        try {
-            const productRef = ref(database, `products/${key}`);
-            await remove(productRef);
-            alert('Product deleted successfully!');
-            fetchProducts(); // Refresh product list
-        } catch (error) {
-            console.error('Error deleting product:', error);
-            alert('Error deleting product!');
-        }
+// Delete a product
+async function deleteProduct(key) {
+    const productRef = ref(database, 'products/' + key);
+    try {
+        await remove(productRef);
+        alert('Product deleted successfully!');
+        fetchProducts(); // Refresh product list
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        alert('Error deleting product!');
     }
-};
+}
 
-// Initialize the script
+// Initial fetch
 fetchProducts();

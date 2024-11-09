@@ -630,6 +630,7 @@ body {
 }
 .popup {
   display: none;
+  display: block;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -639,12 +640,12 @@ body {
   padding: 20px;
   z-index: 10;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  width: 300px; /* Increased width for side-by-side layout */
+  width: 500px; /* Increased width for side-by-side layout */
   display: flex; /* Flexbox for layout */
 }
 
 .popup img {
-  width: 250px; /* Set a fixed width for the image */
+  width: 350px; /* Set a fixed width for the image */
   height: auto; /* Maintain aspect ratio */
   margin-left: 1px; /* Space between image and text */
   border-radius: 10px;

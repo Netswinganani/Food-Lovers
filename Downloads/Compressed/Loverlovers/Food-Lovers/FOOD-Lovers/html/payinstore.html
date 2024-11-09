@@ -43,7 +43,7 @@
       
     
       <div class="loader" id="cart-loader" style="display: none;">
-        <img src="./images/loader.gif" class="loader" alt="Loading..." />
+        <img src="./images/loader.gif"  alt="Loading..." />
     </div>
 <h1>Purchase Confirmation</h1>
 <p>Click the button below to confirm your purchase and generate a QR code.</p>
@@ -51,31 +51,14 @@
 
 <h2>Your QR Code:</h2>
 <div id="qrcode"></div>
-<h2>QR Code Details:</h2>
-<table id="qr-details" border="1" style="border-collapse: collapse; width: 100%; margin-top: 20px;">
-    <thead>
-        <tr>
-            <th style=" background-color: #e79702; color: white; transition: background-color 0.3s ease;">Product Name</th>
-            <th style=" background-color: #e79702; color: white; transition: background-color 0.3s ease;">Price</th>
-        </tr>
-    </thead>
-    <tbody id="qr-details-body">
-        <!-- Product details will be inserted here -->
-    </tbody>
-    <tfoot>
-        <tr>
-            <td><strong>Total Amount:</strong></td>
-            <td id="total-amount"></td>
-        </tr>
-    </tfoot>
-</table>
+
 <h2>Previously Generated QR Codes:</h2>
 <table id="previous-qr-codes-table" border="1">
     <thead>
         <tr>
             <th style=" background-color: #01b30a; color: white; transition: background-color 0.3s ease;">Transaction ID</th>
-            <th style=" background-color: #01b30a; color: white; transition: background-color 0.3s ease;">Products</th>
-            <th style=" background-color: #01b30a; color: white; transition: background-color 0.3s ease;">Total Amount</th>
+            <th style=" background-color: #e79702; color: white; transition: background-color 0.3s ease;">Products</th>
+            <th style=" background-color: #1195e2; color: white; transition: background-color 0.3s ease;">Total Amount</th>
         </tr>
     </thead>
     <tbody id="previous-qr-codes-body"></tbody> <!-- Updated ID -->

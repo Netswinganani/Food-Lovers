@@ -1,52 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Manage Products</title>
     <link rel="stylesheet" href="./css/mprod.css"> <!-- Link your CSS file -->
-<style> .stock-low {
-    color: red; /* Red for low stock (< 5) */
-    font-weight: bold;
-}
+    <style>
+        .stock-low {
+            color: red;
+            font-weight: bold;
+        }
 
-.stock-warning {
-    color: orange; /* Amber for warning stock (< 15) */
-    font-weight: bold;
-}
+        .stock-warning {
+            color: orange;
+            font-weight: bold;
+        }
 
-.stock-normal {
-    color: green; /* Green for normal stock (>= 20) */
-    font-weight: bold;
-}
-</style>
+        .stock-normal {
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #stock-alert {
+            background-color: #f44336;
+            color: white;
+            padding: 10px;
+            display: none;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 20%;
+            box-sizing: border-box;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .modify-btn,
+        .delete-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modify-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="stock-alert" class="alert" style="display: none;">
+    <!-- Stock Alert -->
+    <div id="stock-alert" class="alert">
         <span id="stock-alert-message"></span>
     </div>
-    
+
     <div class="product-management">
-       
+        <!-- Banner Editing Section -->
         <div id="banner-edit-section" class="banner-edit-section">
             <h2>Edit Banner Information</h2>
             <form id="banner-edit-form">
                 <label for="banner-message">Banner Message:</label>
                 <input type="text" id="banner-message" value="SAVE R50! Get Jacobs Instant Coffee Assorted 200g or 230g Refill for ONLY R139.99! *Ends 10 November 2024. Ts&Cs apply." required>
-        
+
                 <label for="banner-category">Category:</label>
                 <input type="text" id="banner-category" required placeholder="Enter category name (proteins)">
-        
-        
+
                 <button type="submit">Update Banner</button>
             </form>
             <div id="other-products-list"></div>
-        </div> 
+        </div>
+
+        <!-- Manage Products Section -->
         <h1>Manage Products</h1>
         <div class="product-list"></div>
         <button id="add-product-btn">Add New Product</button>
     </div>
-    
 
     <!-- Product Form Modal -->
     <div id="product-modal" class="modal">
@@ -73,13 +162,18 @@
         </div>
     </div>
 
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js"></script>
-    <script type="module" src="./js/editbanner.js"></script>
-    <script type="module" src="./firebase.js"></script> <!-- Your Firebase configuration -->
-    <script type="module" src="./js/mod-prod.js"></script> <!-- Your JavaScript file -->
     
+    <!-- Your Firebase configuration -->
+    <script type="module" src="./firebase.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script type="module" src="./js/mod-prod.js"></script> <!-- Modify Product Logic -->
+    <script type="module" src="./js/editbanner.js"></script> <!-- Banner Editing Logic -->
 </body>
+
 </html>

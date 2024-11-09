@@ -1,8 +1,7 @@
-import { database } from './firebase.js';
+import { database } from './firebase.js'; 
 import { ref, get, set, remove } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js';
 import { auth } from './firebase.js';
 import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js';
-import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-functions.js';
 
 const adminList = document.getElementById("adminList");
 const requestList = document.getElementById("requestList");
@@ -10,8 +9,6 @@ const createAdminForm = document.getElementById("createAdminForm");
 const adminNameInput = document.getElementById("adminNameInput");
 const adminEmailInput = document.getElementById("adminEmailInput");
 const adminPasswordInput = document.getElementById("adminPasswordInput");
-
-const functions = getFunctions(); // Move this outside of functions for better scope access
 
 // General function to fetch data from the database
 const fetchData = async (path, listElement, callback) => {
@@ -25,6 +22,7 @@ const fetchData = async (path, listElement, callback) => {
     }
 };
 
+// Fetch admins from the database
 const fetchAdmins = () => {
     fetchData('Admins', adminList, (childSnapshot) => {
         const adminData = childSnapshot.val();
@@ -41,6 +39,7 @@ const fetchAdmins = () => {
     });
 };
 
+// Fetch admin requests from the database
 const fetchRequests = () => {
     fetchData('AdminRequests', requestList, (childSnapshot) => {
         const requestData = childSnapshot.val();
@@ -79,15 +78,6 @@ createAdminForm.addEventListener("submit", async (event) => {
             // Save admin data to the database
             await set(newAdminRef, newAdminData);
 
-            // Set custom claims for the admin
-            const addAdminRole = httpsCallable(functions, 'addAdminRole');
-            try {
-                await addAdminRole({ uid });
-            } catch (error) {
-                console.error("Error setting custom claims:", error);
-                alert("Failed to set admin role. Please try again.");
-            }
-
             // Reset form fields
             adminNameInput.value = '';
             adminEmailInput.value = '';
@@ -121,10 +111,6 @@ window.approveRequest = async (requestId, email) => {
     const newAdminRef = ref(database, `Admins/${requestId}`); // Use requestId for admin data
 
     try {
-        // Call the Cloud Function to set custom claims for the new admin
-        const approveAdmin = httpsCallable(functions, 'approveAdmin');
-        await approveAdmin({ uid: requestId });
-
         // Save admin data to the database
         await set(newAdminRef, adminData);
         
