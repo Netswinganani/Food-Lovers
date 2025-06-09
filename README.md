@@ -100,7 +100,7 @@ Interactive recipe cards featuring:
 
 ## 💳 Business Model
 
-- **Revenue Sharing**: 30% platform fee on seller transactions
+- **Revenue Sharing**: 15% platform fee on seller transactions
 - **Promotional Offers**: 
   - 10% off on purchases over R1000
   - 20% off on meat recipes
@@ -137,7 +137,7 @@ The platform is fully responsive and optimized for:
 ## 📞 Contact Information
 
 **FoodLovers**  
-289 Cooper St. Watertown, MA 02472
+RC
 
 **Social Media:**
 - Facebook: @FoodLovers.in
@@ -152,10 +152,10 @@ The platform is fully responsive and optimized for:
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+1. Mpofu
+2. Kgabale
+3. --
+4. --
 
 ## 📧 Support
 
